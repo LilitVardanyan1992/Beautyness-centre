@@ -4,9 +4,17 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: './src/index.js',
+    output: {
+        filename: '[name].[contenthash].js',
+        // filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
+        publicPath: '/',
+    },
     devtool: 'inline-source-map',
     devServer: {
         static: './dist',
+        hot: true,
     },
     mode: "development",
     plugins: [
@@ -16,35 +24,21 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(),
     ],
-    output: {
-        filename: '[name].bundle.js',
-        // filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        clean: true,
-        publicPath: '/',
-    },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                include: path.resolve(__dirname, 'src'),
+                loader: 'babel-loader',
+            },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
                     "css-loader",
-                    
-                    {
-                        loader: 'resolve-url-loader',
-                        options: {
-                            sourceMap: true, // Enable source maps for better debugging
-                            root: path.resolve(__dirname, 'src'), // Set the root directory for resolving URLs
-                          }
-                      }, {
-                        loader: 'sass-loader',
-                        options: {
-                          sourceMap: true, // <-- !!IMPORTANT!!
-                        }
-                      }
-                    
+                    "resolve-url-loader",
+                    'sass-loader'
                 ],
             },
             {
@@ -61,9 +55,11 @@ module.exports = {
                     filename: 'font/[name][ext]',
                 },
             },
-        ],
+         ],
     },
     optimization: {
-        runtimeChunk: 'single',
+        splitChunks: {
+            chunks: "all"
+        }
     },
 };

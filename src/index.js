@@ -1,2 +1,3 @@
-import _ from 'lodash';
-import "./scss/style.scss";
+import "./scss/styles.scss";
+import swiper from "./js/header/miniHeaderSlider";
+
