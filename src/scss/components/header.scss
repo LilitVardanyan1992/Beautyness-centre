@@ -45,7 +45,7 @@ header {
       align-items:center;
       justify-content: center;
       background-color: $lightCreamsonBg;
-      gap: 80px;
+      gap: 60px;
       min-height: 48px;
       font-size: 14px;
       line-height: 17px;
@@ -53,7 +53,6 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
         gap: 14px;
         .nav__top__left__item {
          text-decoration: none;
@@ -110,7 +109,7 @@ header {
       }
     }
 
-    .nav__mobile__menu {
+    .nav__mobile {
       display: none;
     }
   }
@@ -144,13 +143,16 @@ header {
 
  @media screen and (max-width: $mobileM) {
   nav {
+    padding: 0 16px;
+    height: 60px;
+    min-width: 282px;
+    background: $lightCreamsonBg;
     .nav {
-      height: 60px;
-      width: 282px;
       position: relative;
       .nav__top {
         position: absolute;
         width: 282px;
+        display: none;
         .nav__top__left {
           position: absolute;
           padding: 22px 0px;
@@ -164,7 +166,7 @@ header {
           .nav__top__right__item:nth-child(1) {
             position: absolute;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            top: 64px;
+            top: 60px;
             padding-bottom: 11px;
             z-index: 2;
             background: $lightCreamsonBg;
@@ -179,10 +181,11 @@ header {
           }
 
           .nav__top__right__item:nth-child(3) {
-            position: absolute;
-            right: -100px;
+          //   position: absolute;
+          //   right: -100px;
            
-          background: $lightCreamsonBg;
+          // background: $lightCreamsonBg;
+          display: none;
           }
 
           .nav__top__right__icons {
@@ -190,7 +193,7 @@ header {
             top: 570px;
             width: 100%;
             padding: 22px 0;
-          background: $lightCreamsonBg;
+            background: $lightCreamsonBg;
           }
         }
       }
@@ -202,19 +205,43 @@ header {
         background: $lightCreamsonBg;
         margin-top: 0;
         gap: 0px;
+        display: none;
         .nav__bottom__item {
           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
           padding: 11px 0px;
           width: 80%;
         }
         .nav__bottom__item:nth-child(4) {
-
           display: none;
         }
       }
   
-      .nav__mobile__menu {
-        display: block;
+      .nav__mobile {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        width: 100%;
+       
+        .nav__mobile__burger__menu, .nav__mobile__logo, .nav__mobile__busket{
+          cursor: pointer;
+        } 
+        .nav__mobile__burger__menu {
+          
+        }
+        .nav__mobile__logo {
+          svg {
+            height: 60px;
+            path:nth-child(1) {
+              fill: none;
+            }
+          }
+        
+          
+        }
+        .nav__mobile__busket {
+        }
       }
     }
   }
