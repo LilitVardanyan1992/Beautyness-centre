@@ -47,6 +47,11 @@ module.exports = {
                 generator: {
                     filename: 'img/[name][ext]',
                 },
+        //         test: /\.(png|jpe?g|gif)$/i,
+        // loader: 'file-loader',
+        // options: {
+        //   name: '[path][name].[ext]',
+        // },
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,

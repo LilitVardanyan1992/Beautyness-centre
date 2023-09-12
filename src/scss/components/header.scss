@@ -154,6 +154,7 @@ header {
         width: 282px;
         display: none;
         .nav__top__left {
+          z-index: 100;
           position: absolute;
           padding: 22px 0px;
           top: 345px;
@@ -206,6 +207,7 @@ header {
         margin-top: 0;
         gap: 0px;
         display: none;
+        z-index: 100;
         .nav__bottom__item {
           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
           padding: 11px 0px;
@@ -237,8 +239,6 @@ header {
               fill: none;
             }
           }
-        
-          
         }
         .nav__mobile__busket {
         }
