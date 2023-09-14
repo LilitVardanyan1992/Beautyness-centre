@@ -2,11 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const pages = ["index", "gotovie", "navMenu"];
+
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js'
+    },
     output: {
         filename: '[name].[contenthash].js',
-        // filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         publicPath: '/',
@@ -17,13 +20,17 @@ module.exports = {
         hot: true,
     },
     mode: "development",
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Output Management',
-            template: "./src/index.html"
-        }),
-        new MiniCssExtractPlugin(),
-    ],
+    plugins: [].concat(
+        pages.map(
+            (page) =>
+                new HtmlWebpackPlugin({
+                    inject: true,
+                    template: `./src/${page}.html`,
+                    filename: `${page}.html`,
+                    chunks: ["index"],
+                }),
+        ), new MiniCssExtractPlugin()
+    ),
     module: {
         rules: [
             {
@@ -35,7 +42,6 @@ module.exports = {
                 test: /\.s[ac]ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    // Translates CSS into CommonJS
                     "css-loader",
                     "resolve-url-loader",
                     'sass-loader'
@@ -47,11 +53,6 @@ module.exports = {
                 generator: {
                     filename: 'img/[name][ext]',
                 },
-        //         test: /\.(png|jpe?g|gif)$/i,
-        // loader: 'file-loader',
-        // options: {
-        //   name: '[path][name].[ext]',
-        // },
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -60,7 +61,7 @@ module.exports = {
                     filename: 'font/[name][ext]',
                 },
             },
-         ],
+        ],
     },
     optimization: {
         splitChunks: {

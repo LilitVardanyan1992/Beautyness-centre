@@ -1,4 +1,5 @@
-const swiper = new Swiper('.swiper', {
+function swiperfunc() {
+  const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
@@ -9,5 +10,7 @@ const swiper = new Swiper('.swiper', {
       prevEl: '.swiper-button-prev',
     },
   });
+}
+  
+export default swiperfunc;
 
-  export default swiper;

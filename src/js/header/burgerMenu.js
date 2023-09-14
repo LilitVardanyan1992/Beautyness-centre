@@ -1,6 +1,7 @@
 function burgerMenu() {
     const burgerMenu = document.querySelector(".nav__mobile__burger__menu");
 
+    console.log(burgerMenu)
     const datasClasses = [
         document.querySelector(".nav__top"),
         document.querySelector(".nav__bottom")
@@ -18,7 +19,8 @@ function burgerMenu() {
         `;
 
             datasClasses.forEach(item => {
-                item.style.display = "none";
+                item.style.cssText = `
+                display: none`;
             })
             return;
         }
@@ -29,7 +31,6 @@ function burgerMenu() {
         datasClasses.forEach(item => {
             item.style.display = "flex";
         })
-
     })
 }
 
