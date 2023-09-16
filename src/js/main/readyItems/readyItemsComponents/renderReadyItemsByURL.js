@@ -17,10 +17,17 @@ export default async function renderReadyItemsByURL(url) {
         container.classList.add("ready__items", "container");
 
         // Create and append individual item elements to the container
-        data.forEach(item => {
-            const itemElement = renderReadyItem(item);
-            container.appendChild(itemElement);
-        });
+        
+        let countItems = 6;
+        let itemsRendered = 0;
+
+        for (let i = 0; i < countItems; i++) {
+            if (i < data.length) {
+                const itemElement = renderReadyItem(data[i]);
+                container.appendChild(itemElement);
+                itemsRendered++;
+            }
+        }
 
         // Append the container to the target element
         appendChildToTargetElement(container, ".ready__items__wrapper");
@@ -34,6 +41,18 @@ export default async function renderReadyItemsByURL(url) {
         `;
 
         appendChildToTargetElement(showMore, ".ready__items__wrapper");
+        
+        showMore.addEventListener("click", () => {
+            const newCountItems = itemsRendered + 3;
+            for (let i = itemsRendered; i < newCountItems; i++) {
+                if (i < data.length) {
+                    const itemElement = renderReadyItem(data[i]);
+                    container.appendChild(itemElement);
+                    itemsRendered++;
+                }
+            }
+            countItems = newCountItems;
+        });
 
     } catch (error) {
         console.error('Error:', error);
