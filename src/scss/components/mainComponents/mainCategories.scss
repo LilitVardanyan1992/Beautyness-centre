@@ -23,6 +23,11 @@ main {
                 height: 260px;
                 border-radius: $br;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease, transform 0.3s ease;
+                &:hover {
+                    box-shadow: 0px 0px 30px #ccc;
+                    transform: scale(1.02);
+                }
                 .main__categories__item-img {
                     position: absolute;
                     border-radius: $br;

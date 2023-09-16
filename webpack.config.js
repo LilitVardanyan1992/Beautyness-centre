@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const pages = ["index", "gotovie", "navMenu"];
+const pages = ["index", "readyItems", "navMenu"];
 
 module.exports = {
     entry: {

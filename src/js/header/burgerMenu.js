@@ -1,7 +1,5 @@
 function burgerMenu() {
     const burgerMenu = document.querySelector(".nav__mobile__burger__menu");
-
-    console.log(burgerMenu)
     const datasClasses = [
         document.querySelector(".nav__top"),
         document.querySelector(".nav__bottom")

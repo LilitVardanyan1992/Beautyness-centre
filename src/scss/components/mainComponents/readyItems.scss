@@ -1,0 +1,150 @@
+@import "../globals";
+@import "../variables";
+
+main {
+    .ready__items__wrapper {
+        background: $bg;
+        margin-top: 40px;
+        .ready__items__navigation {
+            font-size: 14px;
+            line-height: 17px;
+            color: $blue;
+            width: 100%;
+            text-align: center;
+            margin: 22px 0;
+            cursor: pointer;
+            span {
+                color: $lightGray;
+            }
+        }
+        .ready__items__title {
+            font-size: min(30px, max(15px + 2vw));
+            color: $deepBrown;
+            line-height: 36px;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 38px;
+        }
+        .category__items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            line-height: 17px;
+            color: $deepBrown;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            .category__item {
+                cursor: pointer;
+                display: block;
+                border-radius: 100px;
+                text-decoration: none;
+                padding: 8px 12px;
+                white-space: nowrap;
+                background-color: $lightCreamsonBg;
+            }
+            
+        }
+        .ready__items {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            .ready__item {
+                background: $white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+                &:hover {
+                    box-shadow: 0px 0px 30px #888;
+                    .ready__item-img {
+                        img {
+                            transform: scale(1.1);
+                            transition: transform 0.3s ease;
+                        }
+                    }
+                    .ready__item-about {
+                        .ready__item__price__and__basket  {
+                            .ready__item-basket {
+                                transform: translateY(-5px) scale(1.2);
+                                transition: transform 0.3s ease;
+                            }
+                        }
+                    }
+
+                }
+                .ready__item-img {
+                    overflow: hidden;
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                    }
+                }
+                .ready__item-about {
+                    bottom: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 20px;
+                    padding: 20px;
+                    .ready__item-title {
+                        color: $deepBrown;
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+                    .ready__item-descr {
+                        color: $deepBrown;
+                        font-size: 14px;
+                        line-height: 17px;
+                        height: 48px;
+                    }
+                    .ready__item__price__and__basket {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        .ready__item-price {
+                            color: $creemson;
+                        }
+                        .ready__item-basket {
+                            cursor: pointer;
+                            color: $mediumBlack;
+                            svg {
+                                path {
+                                    stroke: $mediumBlack;
+                                }
+                            }
+                            span {
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ready__items__show__more {
+            display: block;
+            width: fit-content;
+            padding: 16px 95px;
+            font-size: 14px;
+            line-height: 17px;
+            border: 1px solid $blue;
+            border-radius: $br;
+            margin: 0 auto;
+            margin-top: 40px;
+            cursor: pointer;
+            transition: all .3 ease;
+            &:hover {
+                background: $blue;
+                color: $white;
+                border: 1px solid transparent;
+            }
+        }
+    }
+}
